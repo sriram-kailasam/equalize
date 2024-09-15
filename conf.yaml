@@ -1,0 +1,22 @@
+http:
+  servers:
+    - name: server-1
+      port: 3000
+      locations:
+        - path: /hello
+          response:
+            status: 200
+            data: "Hello back from server 1!"
+    - name: server-2
+      port: 3001
+      locations:
+        - path: /hello
+          response:
+            status: 200
+            data: "Hello back!"
+
+  upstream:
+    name: backend
+    servers:
+      - route: backend1.example.com
+        name: Backend1
